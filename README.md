@@ -47,8 +47,3 @@ This project is a simple e-commerce application with the following features:
 - Dynamic product list with detailed information.
 - Toggle between product list and individual product details.
 - Persistent header and footer for consistent user experience.
-
-## Contact
-
-- Address: Dummy Address, Fake City, 12345
-- Email: contact@ecommerce.fake
