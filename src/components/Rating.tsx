@@ -10,7 +10,7 @@ export function Rating({ rating }: RecipeRatingProp) {
     let ratingIterator = rating;
 
     return (
-        <div className="flex items-center">
+        <div className="flex items-center" role="presentation">
             {Array(5)
                 .fill(0)
                 .map((_, i) => {

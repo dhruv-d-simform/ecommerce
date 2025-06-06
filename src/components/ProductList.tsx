@@ -18,7 +18,10 @@ export function ProductList() {
                             Our Products
                         </span>
                     </p>
-                    <p className="pt-5 pb-14 text-4xl font-semibold">
+                    <p
+                        className="pt-5 pb-14 text-4xl font-semibold"
+                        role="heading"
+                    >
                         Explore Our Products
                     </p>
                 </div>
