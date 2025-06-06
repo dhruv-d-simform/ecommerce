@@ -6,8 +6,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'Annibale Colombo Bed',
         images: [
             'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/1.webp',
-            'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/2.webp',
-            'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/3.webp',
         ],
         price: 1899.99,
         discountPercentage: 8.57,
@@ -18,8 +16,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'Annibale Colombo Sofa',
         images: [
             'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/1.webp',
-            'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/2.webp',
-            'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/3.webp',
         ],
         price: 2499.99,
         discountPercentage: 14.4,
@@ -30,8 +26,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'Bedside Table African Cherry',
         images: [
             'https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/1.webp',
-            'https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/2.webp',
-            'https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/3.webp',
         ],
         price: 299.99,
         discountPercentage: 19.09,
@@ -42,8 +36,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'Knoll Saarinen Executive Conference Chair',
         images: [
             'https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/1.webp',
-            'https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/2.webp',
-            'https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/3.webp',
         ],
         price: 499.99,
         discountPercentage: 2.01,
@@ -54,8 +46,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'Wooden Bathroom Sink With Mirror',
         images: [
             'https://cdn.dummyjson.com/product-images/furniture/wooden-bathroom-sink-with-mirror/1.webp',
-            'https://cdn.dummyjson.com/product-images/furniture/wooden-bathroom-sink-with-mirror/2.webp',
-            'https://cdn.dummyjson.com/product-images/furniture/wooden-bathroom-sink-with-mirror/3.webp',
         ],
         price: 799.99,
         discountPercentage: 8.8,
@@ -72,16 +62,6 @@ export const PRODUCTS: Array<Product> = [
         rating: 4.19,
     },
     {
-        id: 17,
-        title: 'Beef Steak',
-        images: [
-            'https://cdn.dummyjson.com/product-images/groceries/beef-steak/1.webp',
-        ],
-        price: 12.99,
-        discountPercentage: 9.61,
-        rating: 4.47,
-    },
-    {
         id: 18,
         title: 'Cat Food',
         images: [
@@ -90,17 +70,6 @@ export const PRODUCTS: Array<Product> = [
         price: 8.99,
         discountPercentage: 9.58,
         rating: 3.13,
-    },
-    {
-        id: 19,
-        title: 'Chicken Meat',
-        images: [
-            'https://cdn.dummyjson.com/product-images/groceries/chicken-meat/1.webp',
-            'https://cdn.dummyjson.com/product-images/groceries/chicken-meat/2.webp',
-        ],
-        price: 9.99,
-        discountPercentage: 13.7,
-        rating: 3.19,
     },
     {
         id: 20,
@@ -131,26 +100,6 @@ export const PRODUCTS: Array<Product> = [
         price: 10.99,
         discountPercentage: 10.27,
         rating: 4.55,
-    },
-    {
-        id: 23,
-        title: 'Eggs',
-        images: [
-            'https://cdn.dummyjson.com/product-images/groceries/eggs/1.webp',
-        ],
-        price: 2.99,
-        discountPercentage: 11.05,
-        rating: 2.53,
-    },
-    {
-        id: 24,
-        title: 'Fish Steak',
-        images: [
-            'https://cdn.dummyjson.com/product-images/groceries/fish-steak/1.webp',
-        ],
-        price: 14.99,
-        discountPercentage: 4.23,
-        rating: 3.78,
     },
     {
         id: 25,
@@ -187,9 +136,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'Ice Cream',
         images: [
             'https://cdn.dummyjson.com/product-images/groceries/ice-cream/1.webp',
-            'https://cdn.dummyjson.com/product-images/groceries/ice-cream/2.webp',
-            'https://cdn.dummyjson.com/product-images/groceries/ice-cream/3.webp',
-            'https://cdn.dummyjson.com/product-images/groceries/ice-cream/4.webp',
         ],
         price: 5.49,
         discountPercentage: 8.69,
@@ -341,8 +287,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'Decoration Swing',
         images: [
             'https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/1.webp',
-            'https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/2.webp',
-            'https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/3.webp',
         ],
         price: 59.99,
         discountPercentage: 10.41,
@@ -363,8 +307,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'House Showpiece Plant',
         images: [
             'https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/1.webp',
-            'https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/2.webp',
-            'https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/3.webp',
         ],
         price: 39.99,
         discountPercentage: 7.46,
@@ -375,9 +317,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'Plant Pot',
         images: [
             'https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/1.webp',
-            'https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/2.webp',
-            'https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/3.webp',
-            'https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/4.webp',
         ],
         price: 14.99,
         discountPercentage: 6.84,
@@ -408,7 +347,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'Black Aluminium Cup',
         images: [
             'https://cdn.dummyjson.com/product-images/kitchen-accessories/black-aluminium-cup/1.webp',
-            'https://cdn.dummyjson.com/product-images/kitchen-accessories/black-aluminium-cup/2.webp',
         ],
         price: 5.99,
         discountPercentage: 15.65,
@@ -429,9 +367,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'Boxed Blender',
         images: [
             'https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/1.webp',
-            'https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/2.webp',
-            'https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/3.webp',
-            'https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/4.webp',
         ],
         price: 39.99,
         discountPercentage: 7.26,
@@ -482,9 +417,6 @@ export const PRODUCTS: Array<Product> = [
         title: 'Electric Stove',
         images: [
             'https://cdn.dummyjson.com/product-images/kitchen-accessories/electric-stove/1.webp',
-            'https://cdn.dummyjson.com/product-images/kitchen-accessories/electric-stove/2.webp',
-            'https://cdn.dummyjson.com/product-images/kitchen-accessories/electric-stove/3.webp',
-            'https://cdn.dummyjson.com/product-images/kitchen-accessories/electric-stove/4.webp',
         ],
         price: 49.99,
         discountPercentage: 14.04,

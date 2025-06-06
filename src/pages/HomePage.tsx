@@ -1,7 +1,9 @@
+import { ProductList } from '@/components/ProductList';
+
 export function HomePage() {
     return (
         <div>
-            <p>Home Page</p>
+            <ProductList />
         </div>
     );
 }
