@@ -1,9 +1,11 @@
-import { Button } from '@/components/ui/button';
+import { Outlet } from 'react-router';
 
 function App() {
     return (
-        <div className="flex min-h-svh flex-col items-center justify-center">
-            <Button onClick={() => alert('Hello, World')}>Button</Button>
+        <div>
+            <div className="max-w-[100rem] mx-auto pt-16">
+                <Outlet />
+            </div>
         </div>
     );
 }
