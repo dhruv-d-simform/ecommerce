@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router';
 import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 
 function App() {
     return (
@@ -8,6 +9,7 @@ function App() {
             <div className="max-w-[100rem] mx-auto pt-16">
                 <Outlet />
             </div>
+            <Footer />
         </div>
     );
 }
