@@ -5,8 +5,13 @@ import facebookIcon from '/icons/facebook.svg';
 import twitterIcon from '/icons/twitter.svg';
 import instagramIcon from '/icons/instagram.svg';
 import linkedinIcon from '/icons/linkedin.svg';
+import { Button } from './ui/button';
 
-export function Footer() {
+interface FooterProp {
+    focusOnSearch: () => void;
+}
+
+export function Footer({ focusOnSearch }: FooterProp) {
     return (
         <footer className="w-full bg-black text-white px-4 py-20">
             <div className="w-full max-w-[100rem] mx-auto flex justify-center items-start gap-20 flex-wrap">
@@ -14,6 +19,13 @@ export function Footer() {
                     <p className="text-2xl font-semibold" role="heading">
                         ECommerce
                     </p>
+                    <Button
+                        onClick={focusOnSearch}
+                        variant="link"
+                        className="text-white text-lg cursor-pointer"
+                    >
+                        Focus on search
+                    </Button>
                     <div className="flex flex-col gap-4">
                         <p>Subscribe</p>
                         <p>Get 10% off your first order</p>
