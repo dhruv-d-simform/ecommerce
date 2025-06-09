@@ -124,6 +124,6 @@
 }
 
 .grid-cols-auto-fit {
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, 15rem);
     place-content: center;
 }
