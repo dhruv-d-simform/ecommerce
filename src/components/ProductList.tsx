@@ -1,6 +1,6 @@
+import { ProductCard } from '@/components/ProductCard';
+import { Spinner } from '@/components/ui/spinner';
 import type { Product } from '@/types/product.types';
-import { ProductCard } from './ProductCard';
-import { Spinner } from './ui/spinner';
 
 interface ProductListProp {
     products: Array<Product>;

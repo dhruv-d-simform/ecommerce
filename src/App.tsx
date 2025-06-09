@@ -1,8 +1,8 @@
 import { useDeferredValue, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from 'react-router';
+import { SearchContext } from '@/contexts/SearchContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { SearchContext } from '@/contexts/SearchContext';
 
 function App() {
     const searchInputRef = useRef<HTMLInputElement | null>(null);

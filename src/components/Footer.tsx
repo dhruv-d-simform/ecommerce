@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import sampleQR from '/icons/qrcode.svg';
 import googlePlayLogo from '/icons/google_play.svg';
 import appStoreLogo from '/icons/app_store.svg';
@@ -5,7 +6,6 @@ import facebookIcon from '/icons/facebook.svg';
 import twitterIcon from '/icons/twitter.svg';
 import instagramIcon from '/icons/instagram.svg';
 import linkedinIcon from '/icons/linkedin.svg';
-import { Button } from './ui/button';
 
 interface FooterProp {
     focusOnSearch: () => void;

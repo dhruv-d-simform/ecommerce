@@ -1,6 +1,6 @@
-import type { Product } from '@/types/product.types';
-import { Rating } from './Rating';
 import { Link } from 'react-router';
+import { Rating } from '@/components/Rating';
+import type { Product } from '@/types/product.types';
 
 interface ProductCardProp {
     product: Product;

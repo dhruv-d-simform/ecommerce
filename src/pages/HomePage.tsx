@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useProducts } from '@/hooks/useProducts';
-import { ProductList } from '@/components/ProductList';
 import { useSearchContext } from '@/contexts/SearchContext';
+import { ProductList } from '@/components/ProductList';
 
 export function HomePage() {
     const searchQuery = useSearchContext();
