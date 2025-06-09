@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { ArrowLeft } from 'lucide-react';
 import { Rating } from '@/components/Rating';
@@ -24,10 +24,14 @@ export function ProductDetails({ product }: ProductDetailsProp) {
         setSelectedImage(index);
     };
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <button
-                onClick={() => navigate('/')}
+                onClick={() => navigate(-1)}
                 className="flex items-center gap-2 text-main hover:opacity-90 cursor-pointer mb-5"
             >
                 <ArrowLeft className="w-5 h-5" />
