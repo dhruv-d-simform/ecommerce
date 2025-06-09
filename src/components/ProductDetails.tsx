@@ -82,11 +82,8 @@ export function ProductDetails({ product }: ProductDetailsProp) {
 
                     <h1 className="text-3xl font-bold mb-2">{product.title}</h1>
 
-                    <div className="flex items-center mb-4">
+                    <div className="mb-4">
                         <Rating rating={product.rating} />
-                        <span className="ml-1 text-gray-500">
-                            ({product.rating})
-                        </span>
                     </div>
 
                     <div className="mb-6">
