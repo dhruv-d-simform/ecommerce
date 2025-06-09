@@ -9,7 +9,7 @@ export function ProductDetailsPage() {
 
     if (isLoading) {
         return (
-            <div className="flex flex-col items-center justify-center min-h-[40vh] py-16">
+            <div className="flex flex-col items-center justify-center min-h-[80dvh] py-16">
                 <div className="mb-8 relative">
                     <Spinner />
                     <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-14 h-4 bg-gradient-to-t from-transparent to-[rgba(219,68,68,0.1)] blur-sm"></div>

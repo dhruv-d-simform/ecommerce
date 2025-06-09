@@ -11,7 +11,7 @@ export function ProductList({ products, isLoading = false }: ProductListProp) {
     const hasProducts = products.length > 0;
 
     return (
-        <div className="flex">
+        <div className="flex min-h-[80dvh]">
             <div className="hidden sm:block w-56 border-r">
                 <div className="sticky top-16">
                     <p>Sidebar</p>
