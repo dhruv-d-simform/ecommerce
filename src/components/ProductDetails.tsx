@@ -12,8 +12,11 @@ export function ProductDetails({ product }: ProductDetailsProp) {
     const [selectedImage, setSelectedImage] = useState(0);
     const navigate = useNavigate();
 
-    const discountedPrice =
-        product.price - product.price * (product.discountPercentage / 100);
+    const originalPrice = (
+        (product.price / (100 - product.discountPercentage)) *
+        100
+    ).toFixed(2);
+
     const isLowStock = product.stock > 0 && product.stock <= 10;
     const isOutOfStock = product.stock <= 0;
 
@@ -90,10 +93,10 @@ export function ProductDetails({ product }: ProductDetailsProp) {
                         {product.discountPercentage > 0 ? (
                             <>
                                 <span className="text-3xl font-bold text-gray-900">
-                                    ${discountedPrice.toFixed(2)}
+                                    ${product.price}
                                 </span>
                                 <span className="ml-2 text-lg text-gray-500 line-through">
-                                    ${product.price.toFixed(2)}
+                                    ${originalPrice}
                                 </span>
                             </>
                         ) : (
