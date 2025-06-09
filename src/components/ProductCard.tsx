@@ -1,5 +1,6 @@
 import type { Product } from '@/types/product.types';
 import { Rating } from './Rating';
+import { Link } from 'react-router';
 
 interface ProductCardProp {
     product: Product;
@@ -12,7 +13,10 @@ export function ProductCard({ product }: ProductCardProp) {
     ).toFixed(2);
 
     return (
-        <div className="group cursor-pointer rounded-md">
+        <Link
+            to={`/product/${product.id}`}
+            className="group cursor-pointer rounded-md"
+        >
             <div
                 className="w-full aspect-square bg-image overflow-hidden rounded-md"
                 role="button"
@@ -40,6 +44,6 @@ export function ProductCard({ product }: ProductCardProp) {
                 </p>
                 <Rating rating={product.rating} />
             </div>
-        </div>
+        </Link>
     );
 }
