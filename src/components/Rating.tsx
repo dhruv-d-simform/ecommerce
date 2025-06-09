@@ -2,11 +2,11 @@ import starFilledIcon from '/icons/star_filled.svg';
 import starHalfIcon from '/icons/star_half.svg';
 import starHollowIcon from '/icons/star_hollow.svg';
 
-interface RecipeRatingProp {
+interface ProductRatingProp {
     rating: number;
 }
 
-export function Rating({ rating }: RecipeRatingProp) {
+export function Rating({ rating }: ProductRatingProp) {
     let ratingIterator = rating;
 
     return (
