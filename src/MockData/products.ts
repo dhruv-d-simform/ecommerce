@@ -1,0 +1,465 @@
+import type { Product } from '@/types/product.types';
+
+export const PRODUCTS: Array<Product> = [
+    {
+        id: 11,
+        title: 'Annibale Colombo Bed',
+        images: [
+            'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/1.webp',
+        ],
+        price: 1899.99,
+        discountPercentage: 8.57,
+        rating: 4.77,
+    },
+    {
+        id: 12,
+        title: 'Annibale Colombo Sofa',
+        images: [
+            'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/1.webp',
+        ],
+        price: 2499.99,
+        discountPercentage: 14.4,
+        rating: 3.92,
+    },
+    {
+        id: 13,
+        title: 'Bedside Table African Cherry',
+        images: [
+            'https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/1.webp',
+        ],
+        price: 299.99,
+        discountPercentage: 19.09,
+        rating: 2.87,
+    },
+    {
+        id: 14,
+        title: 'Knoll Saarinen Executive Conference Chair',
+        images: [
+            'https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/1.webp',
+        ],
+        price: 499.99,
+        discountPercentage: 2.01,
+        rating: 4.88,
+    },
+    {
+        id: 15,
+        title: 'Wooden Bathroom Sink With Mirror',
+        images: [
+            'https://cdn.dummyjson.com/product-images/furniture/wooden-bathroom-sink-with-mirror/1.webp',
+        ],
+        price: 799.99,
+        discountPercentage: 8.8,
+        rating: 3.59,
+    },
+    {
+        id: 16,
+        title: 'Apple',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/apple/1.webp',
+        ],
+        price: 1.99,
+        discountPercentage: 12.62,
+        rating: 4.19,
+    },
+    {
+        id: 18,
+        title: 'Cat Food',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/cat-food/1.webp',
+        ],
+        price: 8.99,
+        discountPercentage: 9.58,
+        rating: 3.13,
+    },
+    {
+        id: 20,
+        title: 'Cooking Oil',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/cooking-oil/1.webp',
+        ],
+        price: 4.99,
+        discountPercentage: 9.33,
+        rating: 4.8,
+    },
+    {
+        id: 21,
+        title: 'Cucumber',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/cucumber/1.webp',
+        ],
+        price: 1.49,
+        discountPercentage: 0.16,
+        rating: 4.07,
+    },
+    {
+        id: 22,
+        title: 'Dog Food',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/dog-food/1.webp',
+        ],
+        price: 10.99,
+        discountPercentage: 10.27,
+        rating: 4.55,
+    },
+    {
+        id: 25,
+        title: 'Green Bell Pepper',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/green-bell-pepper/1.webp',
+        ],
+        price: 1.29,
+        discountPercentage: 0.16,
+        rating: 3.25,
+    },
+    {
+        id: 26,
+        title: 'Green Chili Pepper',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/green-chili-pepper/1.webp',
+        ],
+        price: 0.99,
+        discountPercentage: 1,
+        rating: 3.66,
+    },
+    {
+        id: 27,
+        title: 'Honey Jar',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/honey-jar/1.webp',
+        ],
+        price: 6.99,
+        discountPercentage: 14.4,
+        rating: 3.97,
+    },
+    {
+        id: 28,
+        title: 'Ice Cream',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/ice-cream/1.webp',
+        ],
+        price: 5.49,
+        discountPercentage: 8.69,
+        rating: 3.39,
+    },
+    {
+        id: 29,
+        title: 'Juice',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/juice/1.webp',
+        ],
+        price: 3.99,
+        discountPercentage: 12.06,
+        rating: 3.94,
+    },
+    {
+        id: 30,
+        title: 'Kiwi',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/kiwi/1.webp',
+        ],
+        price: 2.49,
+        discountPercentage: 15.22,
+        rating: 4.93,
+    },
+    {
+        id: 31,
+        title: 'Lemon',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/lemon/1.webp',
+        ],
+        price: 0.79,
+        discountPercentage: 9.7,
+        rating: 3.53,
+    },
+    {
+        id: 32,
+        title: 'Milk',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/milk/1.webp',
+        ],
+        price: 3.49,
+        discountPercentage: 13.74,
+        rating: 2.61,
+    },
+    {
+        id: 33,
+        title: 'Mulberry',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/mulberry/1.webp',
+        ],
+        price: 4.99,
+        discountPercentage: 12.87,
+        rating: 4.95,
+    },
+    {
+        id: 34,
+        title: 'Nescafe Coffee',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/nescafe-coffee/1.webp',
+        ],
+        price: 7.99,
+        discountPercentage: 1.59,
+        rating: 4.82,
+    },
+    {
+        id: 35,
+        title: 'Potatoes',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/potatoes/1.webp',
+        ],
+        price: 2.29,
+        discountPercentage: 5.38,
+        rating: 4.81,
+    },
+    {
+        id: 36,
+        title: 'Protein Powder',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/protein-powder/1.webp',
+        ],
+        price: 19.99,
+        discountPercentage: 7.59,
+        rating: 4.18,
+    },
+    {
+        id: 37,
+        title: 'Red Onions',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/red-onions/1.webp',
+        ],
+        price: 1.99,
+        discountPercentage: 9.9,
+        rating: 4.2,
+    },
+    {
+        id: 38,
+        title: 'Rice',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/rice/1.webp',
+        ],
+        price: 5.99,
+        discountPercentage: 9.29,
+        rating: 3.18,
+    },
+    {
+        id: 39,
+        title: 'Soft Drinks',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/soft-drinks/1.webp',
+        ],
+        price: 1.99,
+        discountPercentage: 17.48,
+        rating: 4.75,
+    },
+    {
+        id: 40,
+        title: 'Strawberry',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/strawberry/1.webp',
+        ],
+        price: 3.99,
+        discountPercentage: 1.12,
+        rating: 3.08,
+    },
+    {
+        id: 41,
+        title: 'Tissue Paper Box',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/tissue-paper-box/1.webp',
+            'https://cdn.dummyjson.com/product-images/groceries/tissue-paper-box/2.webp',
+        ],
+        price: 2.49,
+        discountPercentage: 13.28,
+        rating: 2.69,
+    },
+    {
+        id: 42,
+        title: 'Water',
+        images: [
+            'https://cdn.dummyjson.com/product-images/groceries/water/1.webp',
+        ],
+        price: 0.99,
+        discountPercentage: 14.92,
+        rating: 4.96,
+    },
+    {
+        id: 43,
+        title: 'Decoration Swing',
+        images: [
+            'https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/1.webp',
+        ],
+        price: 59.99,
+        discountPercentage: 10.41,
+        rating: 3.16,
+    },
+    {
+        id: 44,
+        title: 'Family Tree Photo Frame',
+        images: [
+            'https://cdn.dummyjson.com/product-images/home-decoration/family-tree-photo-frame/1.webp',
+        ],
+        price: 29.99,
+        discountPercentage: 14.87,
+        rating: 4.53,
+    },
+    {
+        id: 45,
+        title: 'House Showpiece Plant',
+        images: [
+            'https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/1.webp',
+        ],
+        price: 39.99,
+        discountPercentage: 7.46,
+        rating: 4.67,
+    },
+    {
+        id: 46,
+        title: 'Plant Pot',
+        images: [
+            'https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/1.webp',
+        ],
+        price: 14.99,
+        discountPercentage: 6.84,
+        rating: 3.01,
+    },
+    {
+        id: 47,
+        title: 'Table Lamp',
+        images: [
+            'https://cdn.dummyjson.com/product-images/home-decoration/table-lamp/1.webp',
+        ],
+        price: 49.99,
+        discountPercentage: 7.09,
+        rating: 3.55,
+    },
+    {
+        id: 48,
+        title: 'Bamboo Spatula',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/bamboo-spatula/1.webp',
+        ],
+        price: 7.99,
+        discountPercentage: 2.84,
+        rating: 3.27,
+    },
+    {
+        id: 49,
+        title: 'Black Aluminium Cup',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/black-aluminium-cup/1.webp',
+        ],
+        price: 5.99,
+        discountPercentage: 15.65,
+        rating: 4.46,
+    },
+    {
+        id: 50,
+        title: 'Black Whisk',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/black-whisk/1.webp',
+        ],
+        price: 9.99,
+        discountPercentage: 10.24,
+        rating: 3.9,
+    },
+    {
+        id: 51,
+        title: 'Boxed Blender',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/1.webp',
+        ],
+        price: 39.99,
+        discountPercentage: 7.26,
+        rating: 4.56,
+    },
+    {
+        id: 52,
+        title: 'Carbon Steel Wok',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/carbon-steel-wok/1.webp',
+        ],
+        price: 29.99,
+        discountPercentage: 6.53,
+        rating: 4.05,
+    },
+    {
+        id: 53,
+        title: 'Chopping Board',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/chopping-board/1.webp',
+        ],
+        price: 12.99,
+        discountPercentage: 8.03,
+        rating: 3.7,
+    },
+    {
+        id: 54,
+        title: 'Citrus Squeezer Yellow',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/citrus-squeezer-yellow/1.webp',
+        ],
+        price: 8.99,
+        discountPercentage: 12.1,
+        rating: 4.63,
+    },
+    {
+        id: 55,
+        title: 'Egg Slicer',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/egg-slicer/1.webp',
+        ],
+        price: 6.99,
+        discountPercentage: 14.76,
+        rating: 3.09,
+    },
+    {
+        id: 56,
+        title: 'Electric Stove',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/electric-stove/1.webp',
+        ],
+        price: 49.99,
+        discountPercentage: 14.04,
+        rating: 4.11,
+    },
+    {
+        id: 57,
+        title: 'Fine Mesh Strainer',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/fine-mesh-strainer/1.webp',
+        ],
+        price: 9.99,
+        discountPercentage: 3.5,
+        rating: 3.04,
+    },
+    {
+        id: 58,
+        title: 'Fork',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/fork/1.webp',
+        ],
+        price: 3.99,
+        discountPercentage: 8.07,
+        rating: 3.11,
+    },
+    {
+        id: 59,
+        title: 'Glass',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/glass/1.webp',
+        ],
+        price: 4.99,
+        discountPercentage: 7.92,
+        rating: 4.02,
+    },
+    {
+        id: 60,
+        title: 'Grater Black',
+        images: [
+            'https://cdn.dummyjson.com/product-images/kitchen-accessories/grater-black/1.webp',
+        ],
+        price: 10.99,
+        discountPercentage: 3.56,
+        rating: 3.21,
+    },
+];
