@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { ArrowLeft } from 'lucide-react';
 import { Rating } from '@/components/Rating';
 import type { Product } from '@/types/product.types';
@@ -10,6 +10,7 @@ interface ProductDetailsProp {
 
 export function ProductDetails({ product }: ProductDetailsProp) {
     const [selectedImage, setSelectedImage] = useState(0);
+    const location = useLocation();
     const navigate = useNavigate();
 
     const originalPrice = (
@@ -31,7 +32,9 @@ export function ProductDetails({ product }: ProductDetailsProp) {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <button
-                onClick={() => navigate(-1)}
+                onClick={() =>
+                    location.state?.from === '/' ? navigate(-1) : navigate('/')
+                }
                 className="flex items-center gap-2 text-main hover:opacity-90 cursor-pointer mb-5"
             >
                 <ArrowLeft className="w-5 h-5" />

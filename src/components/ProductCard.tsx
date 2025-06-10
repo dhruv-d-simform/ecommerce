@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import { Rating } from '@/components/Rating';
 import type { Product } from '@/types/product.types';
 
@@ -7,6 +7,8 @@ interface ProductCardProp {
 }
 
 export function ProductCard({ product }: ProductCardProp) {
+    const location = useLocation();
+
     const originalPrice = (
         (product.price / (100 - product.discountPercentage)) *
         100
@@ -15,6 +17,7 @@ export function ProductCard({ product }: ProductCardProp) {
     return (
         <Link
             to={`/product/${product.id}`}
+            state={{ from: location.pathname }}
             className="group cursor-pointer rounded-md"
         >
             <div
