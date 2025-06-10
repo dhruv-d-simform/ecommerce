@@ -1,6 +1,6 @@
 import { Navigate, useParams } from 'react-router';
 import { useProductDetails } from '@/hooks/useProductDetails';
-import { ProductDetails } from '@/components/ProductDetails';
+import { ProductDetails } from '@/components/ProductDetails/ProductDetails';
 import { Spinner } from '@/components/ui/spinner';
 
 export function ProductDetailsPage() {
