@@ -73,7 +73,7 @@ export function Sidebar({
                                     parseInt(e.target.value)
                                 )
                             }
-                            className="w-full"
+                            className="w-full cursor-pointer"
                         />
                     </div>
                     <div>
@@ -91,7 +91,7 @@ export function Sidebar({
                                     parseInt(e.target.value)
                                 )
                             }
-                            className="w-full"
+                            className="w-full cursor-pointer"
                         />
                     </div>
                 </div>
@@ -109,7 +109,7 @@ export function Sidebar({
                                 type="radio"
                                 checked={filters.sortBy === option.value}
                                 onChange={() => handleSortChange(option.value)}
-                                className="mr-2"
+                                className="mr-2 cursor-pointer"
                             />
                             <span>{option.label}</span>
                         </label>
