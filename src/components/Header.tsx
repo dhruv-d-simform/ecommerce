@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { supabase } from '@/supabase-client';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
@@ -41,10 +42,11 @@ export function Header({ searchInput, setSearchInput, ref }: HeaderProps) {
             </div>
 
             <Button
+                onClick={() => supabase.auth.signOut()}
                 variant="ghost"
                 className="bg-main text-white hover:bg-main hover:text-white hover:opacity-90 cursor-pointer"
             >
-                Login
+                Logout
             </Button>
         </header>
     );
