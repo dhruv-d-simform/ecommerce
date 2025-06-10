@@ -1,10 +1,16 @@
 import { Link } from 'react-router';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 import searchIcon from '/icons/search.svg';
 
-export function Header() {
+interface HeaderProps {
+    searchInput: string;
+    setSearchInput: React.Dispatch<React.SetStateAction<string>>;
+    ref: React.Ref<HTMLInputElement | null>;
+}
+
+export function Header({ searchInput, setSearchInput, ref }: HeaderProps) {
     return (
         <header className="fixed z-10 bg-background w-full max-w-[100rem] mx-auto left-0 right-0 h-16 border-b flex justify-between items-center gap-6 px-6">
             <Link to="/" className="text-2xl font-bold text-nowrap">
@@ -17,6 +23,9 @@ export function Header() {
                     placeholder="What are you looking for ?"
                     className="w-full h-10 pr-12 bg-searchbar border-none"
                     aria-label="Search products"
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.currentTarget.value)}
+                    ref={ref}
                 />
 
                 <Button

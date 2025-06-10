@@ -1,18 +1,25 @@
+import { Link, useLocation } from 'react-router';
+import { Rating } from '@/components/Rating';
 import type { Product } from '@/types/product.types';
-import { Rating } from './Rating';
 
 interface ProductCardProp {
     product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProp) {
+    const location = useLocation();
+
     const originalPrice = (
         (product.price / (100 - product.discountPercentage)) *
         100
     ).toFixed(2);
 
     return (
-        <div className="group cursor-pointer rounded-md">
+        <Link
+            to={`/product/${product.id}`}
+            state={{ from: location.pathname }}
+            className="group cursor-pointer rounded-md"
+        >
             <div
                 className="w-full aspect-square bg-image overflow-hidden rounded-md"
                 role="button"
@@ -40,6 +47,6 @@ export function ProductCard({ product }: ProductCardProp) {
                 </p>
                 <Rating rating={product.rating} />
             </div>
-        </div>
+        </Link>
     );
 }
