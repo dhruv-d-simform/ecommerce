@@ -56,7 +56,7 @@ export function LoginPage() {
                     <div>
                         <p>
                             Don't Have An Account?{' '}
-                            <Link to="/sign-up">
+                            <Link to="/signup">
                                 <span className="text-blue-600 ml-1.5">
                                     Sign Up
                                 </span>
