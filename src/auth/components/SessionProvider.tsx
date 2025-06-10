@@ -3,22 +3,15 @@ import { SessionContext } from '../contexts/SessionContext';
 import { SupabaseSession } from '@/types/supabase.types';
 import { supabase } from '@/supabase-client';
 
-let initialSession: SupabaseSession = null;
-
-try {
-    const { data } = await supabase.auth.getSession();
-    initialSession = data.session;
-} catch (err) {
-    console.error(err);
-}
-
 export function SessionProvider({ children }: React.PropsWithChildren) {
-    const [session, setSession] = useState<SupabaseSession>(initialSession);
+    const [session, setSession] = useState<SupabaseSession>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchSession = async () => {
             const { data } = await supabase.auth.getSession();
             setSession(data.session);
+            setLoading(false);
         };
 
         fetchSession();
@@ -26,6 +19,7 @@ export function SessionProvider({ children }: React.PropsWithChildren) {
         const { data: listener } = supabase.auth.onAuthStateChange(
             (_event, session) => {
                 setSession(session);
+                setLoading(false);
             }
         );
 
@@ -35,7 +29,7 @@ export function SessionProvider({ children }: React.PropsWithChildren) {
     }, []);
 
     return (
-        <SessionContext.Provider value={session}>
+        <SessionContext.Provider value={{ session, loading }}>
             {children}
         </SessionContext.Provider>
     );
