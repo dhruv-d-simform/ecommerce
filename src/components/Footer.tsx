@@ -1,3 +1,4 @@
+import { ErrorTest } from './ErrorTest';
 import { Button } from '@/components/ui/button';
 import sampleQR from '/icons/qrcode.svg';
 import googlePlayLogo from '/icons/google_play.svg';
@@ -26,6 +27,7 @@ export function Footer({ focusOnSearch }: FooterProp) {
                     >
                         Focus on search
                     </Button>
+                    <ErrorTest />
                     <div className="flex flex-col gap-4">
                         <p>Subscribe</p>
                         <p>Get 10% off your first order</p>

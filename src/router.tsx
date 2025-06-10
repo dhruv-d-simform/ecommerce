@@ -11,6 +11,7 @@ import { SignupPage } from '@/auth/pages/SignupPage';
 import { NotFound } from '@/pages/NotFound';
 import { PrivateRoute } from '@/auth/components/PrivateRoute';
 import { PublicRoute } from '@/auth/components/PublicRoute';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -19,7 +20,9 @@ export const router = createBrowserRouter(
                 path="/"
                 element={
                     <PrivateRoute>
-                        <App />
+                        <ErrorBoundary>
+                            <App />
+                        </ErrorBoundary>
                     </PrivateRoute>
                 }
             >
@@ -34,7 +37,9 @@ export const router = createBrowserRouter(
                 path="/login"
                 element={
                     <PublicRoute>
-                        <LoginPage />
+                        <ErrorBoundary>
+                            <LoginPage />
+                        </ErrorBoundary>
                     </PublicRoute>
                 }
             />
@@ -42,7 +47,9 @@ export const router = createBrowserRouter(
                 path="/signup"
                 element={
                     <PublicRoute>
-                        <SignupPage />
+                        <ErrorBoundary>
+                            <SignupPage />
+                        </ErrorBoundary>
                     </PublicRoute>
                 }
             />
