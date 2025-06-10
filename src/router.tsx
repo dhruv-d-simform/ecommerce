@@ -11,7 +11,7 @@ import { SignupPage } from '@/auth/pages/SignupPage';
 import { NotFound } from '@/pages/NotFound';
 import { PrivateRoute } from '@/auth/components/PrivateRoute';
 import { PublicRoute } from '@/auth/components/PublicRoute';
-import { ErrorBoundary } from './components/ErrorBoundary';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
