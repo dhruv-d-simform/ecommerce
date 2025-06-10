@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface Props {
+export interface Prop {
     children: React.ReactNode;
 }
 export interface State {
@@ -8,8 +8,8 @@ export interface State {
     errorMsg: string;
 }
 
-export class ErrorBoundary extends React.Component<Props, State> {
-    constructor(props: Props) {
+export class ErrorBoundary extends React.Component<Prop, State> {
+    constructor(props: Prop) {
         super(props);
         this.state = { hasError: false, errorMsg: '' };
     }
