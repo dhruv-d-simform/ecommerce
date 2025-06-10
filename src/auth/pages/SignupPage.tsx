@@ -1,5 +1,12 @@
-import { Link } from 'react-router';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router';
 import { CalendarIcon } from 'lucide-react';
+import { useFormik } from 'formik';
+import { format } from 'date-fns';
+
+import type { Gender, User } from '@/types/user.types';
+import { supabase } from '@/supabase-client';
+import { AddUserSchema } from '@/auth/utils/validations';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -18,9 +25,55 @@ import {
 } from '@/components/ui/popover';
 
 export function SignupPage() {
+    const [open, setOpen] = useState(false);
+    const [date, setDate] = useState<Date | undefined>(undefined);
+    const navigate = useNavigate();
+
+    const formik = useFormik<User>({
+        initialValues: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            age: 0,
+            gender: 'male',
+            contactNumber: '',
+            password: '',
+            confirmPassword: '',
+        },
+        validationSchema: AddUserSchema,
+        validateOnChange: true,
+        validateOnBlur: true,
+        onSubmit: async (values) => {
+            const newUser: Omit<User, 'confirmPassword'> = {
+                firstName: values.firstName.trim(),
+                lastName: values.lastName.trim(),
+                email: values.email.trim(),
+                age: values.age,
+                gender: values.gender,
+                contactNumber: values.contactNumber,
+                password: values.password,
+            };
+
+            try {
+                const { error } = await supabase.auth.signUp(newUser);
+
+                if (error) {
+                    alert('An error occurred during signup. Please try again.');
+                } else {
+                    alert('Account created successfully!');
+                    await supabase.auth.signOut();
+                    navigate('/sign-in');
+                }
+            } catch (error) {
+                alert('An error occurred during signup. Please try again.');
+                console.error(error);
+            }
+        },
+    });
+
     return (
-        <form>
-            <div className="flex h-full items-center justify-center pb-16">
+        <form onSubmit={formik.handleSubmit}>
+            <div className="flex h-full min-h-dvh items-center justify-center pt-8 pb-16">
                 <div className="flex flex-col w-180 gap-6">
                     <p
                         className="text-4xl font-medium my-8 text-center"
@@ -45,10 +98,16 @@ export function SignupPage() {
                                 placeholder="Enter your First Name"
                                 id="firstName"
                                 className="h-10"
+                                value={formik.values.firstName}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
-                            <p className="text-red-600 text-sm">
-                                First Name Error
-                            </p>
+                            {formik.touched.firstName &&
+                                formik.errors.firstName && (
+                                    <p className="text-red-600 text-sm">
+                                        {formik.errors.firstName}
+                                    </p>
+                                )}
                         </div>
                         <div className="space-y-3 w-full">
                             <Label htmlFor="lastName" className="text-gray-700">
@@ -60,10 +119,16 @@ export function SignupPage() {
                                 placeholder="Enter your Last Name"
                                 id="lastName"
                                 className="h-10"
+                                value={formik.values.lastName}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
-                            <p className="text-red-600 text-sm">
-                                Last Name Error
-                            </p>
+                            {formik.touched.lastName &&
+                                formik.errors.lastName && (
+                                    <p className="text-red-600 text-sm">
+                                        {formik.errors.lastName}
+                                    </p>
+                                )}
                         </div>
                     </div>
 
@@ -78,8 +143,15 @@ export function SignupPage() {
                                 placeholder="Enter your Email"
                                 id="email"
                                 className="h-10"
+                                value={formik.values.email}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
-                            <p className="text-red-600 text-sm">Email Error</p>
+                            {formik.touched.email && formik.errors.email && (
+                                <p className="text-red-600 text-sm">
+                                    {formik.errors.email}
+                                </p>
+                            )}
                         </div>
                         <div className="space-y-3 w-full">
                             <Label htmlFor="city" className="text-gray-700">
@@ -129,14 +201,30 @@ export function SignupPage() {
                                 id="age"
                                 className="h-10"
                                 type="number"
+                                value={formik.values.age}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
-                            <p className="text-red-600 text-sm">Age Error</p>
+                            {formik.touched.age && formik.errors.age && (
+                                <p className="text-red-600 text-sm">
+                                    {formik.errors.age}
+                                </p>
+                            )}
                         </div>
                         <div className="space-y-3 w-full">
                             <Label htmlFor="gender" className="text-gray-700">
                                 Gender <span className="text-red-700">*</span>
                             </Label>
-                            <Select name="gender">
+                            <Select
+                                name="gender"
+                                value={formik.values.gender}
+                                onValueChange={(value) =>
+                                    formik.setFieldValue(
+                                        'gender',
+                                        value as Gender
+                                    )
+                                }
+                            >
                                 <SelectTrigger
                                     id="gender"
                                     className="w-full py-[18.5px]"
@@ -151,7 +239,11 @@ export function SignupPage() {
                                     <SelectItem value="other">Other</SelectItem>
                                 </SelectContent>
                             </Select>
-                            <p className="text-red-600 text-sm">Gender Error</p>
+                            {formik.touched.gender && formik.errors.gender && (
+                                <p className="text-red-600 text-sm">
+                                    {formik.errors.gender}
+                                </p>
+                            )}
                         </div>
                     </div>
 
@@ -171,10 +263,16 @@ export function SignupPage() {
                                 id="contactNumber"
                                 className="h-10"
                                 type="number"
+                                value={formik.values.contactNumber}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
-                            <p className="text-red-600 text-sm">
-                                Contact Number Error
-                            </p>
+                            {formik.touched.contactNumber &&
+                                formik.errors.contactNumber && (
+                                    <p className="text-red-600 text-sm">
+                                        {formik.errors.contactNumber}
+                                    </p>
+                                )}
                         </div>
                         <div className="space-y-3 w-full">
                             <Label htmlFor="picture" className="text-gray-700">
@@ -197,7 +295,7 @@ export function SignupPage() {
                             >
                                 Birth Date
                             </Label>
-                            <Popover>
+                            <Popover open={open} onOpenChange={setOpen}>
                                 <PopoverTrigger asChild>
                                     <Button
                                         type="button"
@@ -206,14 +304,24 @@ export function SignupPage() {
                                         className="w-full justify-start font-normal cursor-pointer h-10"
                                     >
                                         <CalendarIcon className="mr-2 h-4 w-4" />
-                                        Select Your Birth Date
+                                        {date
+                                            ? format(date, 'PPP')
+                                            : 'Select Your Birth Date'}
                                     </Button>
                                 </PopoverTrigger>
                                 <PopoverContent
                                     className="w-auto p-0"
                                     align="start"
                                 >
-                                    <Calendar mode="single" initialFocus />
+                                    <Calendar
+                                        mode="single"
+                                        initialFocus
+                                        selected={date}
+                                        onSelect={(date) => {
+                                            setDate(date);
+                                            setOpen(false);
+                                        }}
+                                    />
                                 </PopoverContent>
                             </Popover>
                         </div>
@@ -232,10 +340,16 @@ export function SignupPage() {
                                     id="password"
                                     type="password"
                                     className="h-10 text-gray-700"
+                                    value={formik.values.password}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
-                                <p className="text-red-600 text-sm">
-                                    Password Error
-                                </p>
+                                {formik.touched.password &&
+                                    formik.errors.password && (
+                                        <p className="text-red-600 text-sm">
+                                            {formik.errors.password}
+                                        </p>
+                                    )}
                             </div>
                         </div>
                     </div>
@@ -255,16 +369,23 @@ export function SignupPage() {
                             id="confirm-password"
                             type="password"
                             className="h-10 text-gray-700"
+                            value={formik.values.confirmPassword}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                         />
-                        <p className="text-red-600 text-sm">
-                            Confirm Password Error
-                        </p>
+                        {formik.touched.confirmPassword &&
+                            formik.errors.confirmPassword && (
+                                <p className="text-red-600 text-sm">
+                                    {formik.errors.confirmPassword}
+                                </p>
+                            )}
                     </div>
 
                     <div>
                         <Button
                             className="bg-main text-[16px] w-full py-5 cursor-pointer hover:bg-main/80"
                             type="submit"
+                            disabled={!(formik.isValid && formik.dirty)}
                         >
                             Create Account
                         </Button>
