@@ -15,8 +15,6 @@ export function ProductList({
     isLoading = false,
     isSearching = false,
 }: ProductListProp) {
-    const hasProducts = products.length > 0;
-
     const priceRangeLimit = useMemo(() => {
         if (!products || products.length === 0)
             return {
@@ -91,6 +89,8 @@ export function ProductList({
                 return filtered;
         }
     }, [products, filters, isSearching, priceRangeLimit]);
+
+    const hasProducts = filteredProducts.length > 0;
 
     return (
         <div className="flex min-h-[80dvh]">
