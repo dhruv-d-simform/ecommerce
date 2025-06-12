@@ -65,7 +65,10 @@ export function Sidebar({
                         <input
                             type="range"
                             min={priceRangeLimit.min}
-                            max={priceRangeLimit.max}
+                            max={Math.min(
+                                filters.priceRange.max,
+                                priceRangeLimit.max
+                            )}
                             value={filters.priceRange.min}
                             onChange={(e) =>
                                 handlePriceChange(
@@ -82,7 +85,10 @@ export function Sidebar({
                         </p>
                         <input
                             type="range"
-                            min={priceRangeLimit.min}
+                            min={Math.max(
+                                filters.priceRange.min,
+                                priceRangeLimit.min
+                            )}
                             max={priceRangeLimit.max}
                             value={filters.priceRange.max}
                             onChange={(e) =>
