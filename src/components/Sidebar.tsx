@@ -60,7 +60,8 @@ export function Sidebar({
                 <div className="space-y-3 mt-2">
                     <div>
                         <p className="text-sm text-gray-500 mb-1">
-                            Min: ${filters.priceRange.min}
+                            Min: $
+                            {Intl.NumberFormat().format(filters.priceRange.min)}
                         </p>
                         <input
                             type="range"
@@ -81,7 +82,8 @@ export function Sidebar({
                     </div>
                     <div>
                         <p className="text-sm text-gray-500 mb-1">
-                            Max: ${filters.priceRange.max}
+                            Max: $
+                            {Intl.NumberFormat().format(filters.priceRange.max)}
                         </p>
                         <input
                             type="range"

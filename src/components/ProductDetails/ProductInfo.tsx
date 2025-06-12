@@ -27,8 +27,8 @@ export function ProductInfo({
     sku,
     weight,
 }: ProductInfoProps) {
-    const originalPrice = ((price / (100 - discountPercentage)) * 100).toFixed(
-        2
+    const originalPrice = Number(
+        ((price / (100 - discountPercentage)) * 100).toFixed(2)
     );
 
     const isLowStock = stock > 0 && stock <= 10;
@@ -57,10 +57,10 @@ export function ProductInfo({
                 {discountPercentage > 0 ? (
                     <>
                         <span className="text-3xl font-bold text-gray-900">
-                            ${price}
+                            ${Intl.NumberFormat().format(price)}
                         </span>
                         <span className="ml-2 text-lg text-gray-500 line-through">
-                            ${originalPrice}
+                            ${Intl.NumberFormat().format(originalPrice)}
                         </span>
                     </>
                 ) : (
