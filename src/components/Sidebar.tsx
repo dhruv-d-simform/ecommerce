@@ -42,6 +42,7 @@ export function Sidebar({
 
     const handleSortChange = (sortBy: SortOptions) => {
         onFilterChange('sortBy', sortBy);
+        window.scrollTo(0, 0);
     };
 
     return (
