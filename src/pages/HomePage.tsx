@@ -23,5 +23,11 @@ export function HomePage() {
         return allProducts;
     }, [allProducts, isSearching, searchQuery]);
 
-    return <ProductList products={filteredProducts} isLoading={isLoading} />;
+    return (
+        <ProductList
+            products={filteredProducts}
+            isLoading={isLoading}
+            isSearching={isSearching}
+        />
+    );
 }

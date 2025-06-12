@@ -1,20 +1,106 @@
+import { useEffect, useMemo, useState } from 'react';
 import { ProductCard } from '@/components/ProductCard';
 import { Spinner } from '@/components/ui/spinner';
+import { type FilterState, SortOptions, Sidebar } from '@/components/Sidebar';
 import type { Product } from '@/types/product.types';
 
 interface ProductListProp {
     products: Array<Product>;
     isLoading?: boolean;
+    isSearching?: boolean;
 }
 
-export function ProductList({ products, isLoading = false }: ProductListProp) {
-    const hasProducts = products.length > 0;
+export function ProductList({
+    products,
+    isLoading = false,
+    isSearching = false,
+}: ProductListProp) {
+    const priceRangeLimit = useMemo(() => {
+        if (!products || products.length === 0)
+            return {
+                min: 0,
+                max: 1000,
+            };
+
+        const prices = products.map((p) => p.price);
+        return {
+            min: Math.floor(Math.min(...prices)),
+            max: Math.ceil(Math.max(...prices)),
+        };
+    }, [products]);
+
+    const [filters, setFilters] = useState<FilterState>({
+        priceRange: priceRangeLimit,
+        sortBy: SortOptions.Featured,
+    });
+
+    const handleFilterChange = (
+        key: keyof FilterState,
+        value: FilterState[keyof FilterState]
+    ) => {
+        setFilters((prev) => ({
+            ...prev,
+            [key]: value,
+        }));
+    };
+
+    useEffect(() => {
+        handleFilterChange('priceRange', priceRangeLimit);
+    }, [priceRangeLimit]);
+
+    // Apply filters to products
+    const filteredProducts = useMemo(() => {
+        // Skip filtering if in search mode
+        if (isSearching) {
+            return products;
+        }
+
+        // Check if any active filters (except default values)
+        const hasActiveFilters =
+            filters.priceRange.min !== priceRangeLimit.max ||
+            filters.priceRange.max !== priceRangeLimit.max;
+
+        if (!hasActiveFilters && filters.sortBy === 'featured') {
+            return products;
+        }
+
+        // filter products
+        const filtered = [...products].filter((product) => {
+            // Price filter
+            const inPriceRange =
+                product.price >= filters.priceRange.min &&
+                product.price <= filters.priceRange.max;
+
+            return inPriceRange;
+        });
+
+        // sort filtered products
+        switch (filters.sortBy) {
+            case SortOptions.NameAsc:
+                return filtered.sort((a, b) => a.title.localeCompare(b.title));
+            case SortOptions.NameDesc:
+                return filtered.sort((a, b) => b.title.localeCompare(a.title));
+            case SortOptions.PriceAsc:
+                return filtered.sort((a, b) => a.price - b.price);
+            case SortOptions.PriceDesc:
+                return filtered.sort((a, b) => b.price - a.price);
+            case SortOptions.Featured:
+            default:
+                return filtered;
+        }
+    }, [products, filters, isSearching, priceRangeLimit]);
+
+    const hasProducts = filteredProducts.length > 0;
 
     return (
         <div className="flex min-h-[80dvh]">
             <div className="hidden sm:block w-56 border-r">
                 <div className="sticky top-16">
-                    <p>Sidebar</p>
+                    <Sidebar
+                        filters={filters}
+                        priceRangeLimit={priceRangeLimit}
+                        onFilterChange={handleFilterChange}
+                    />
                 </div>
             </div>
 
@@ -50,7 +136,7 @@ export function ProductList({ products, isLoading = false }: ProductListProp) {
                 ) : (
                     <div className="grid grid-cols-auto-fit gap-8">
                         {hasProducts ? (
-                            products.map((product) => (
+                            filteredProducts.map((product) => (
                                 <ProductCard
                                     key={product.id}
                                     product={product}

@@ -9,10 +9,9 @@ interface ProductCardProp {
 export function ProductCard({ product }: ProductCardProp) {
     const location = useLocation();
 
-    const originalPrice = (
-        (product.price / (100 - product.discountPercentage)) *
-        100
-    ).toFixed(2);
+    const originalPrice = Number(
+        ((product.price / (100 - product.discountPercentage)) * 100).toFixed(2)
+    );
 
     return (
         <Link
@@ -37,12 +36,14 @@ export function ProductCard({ product }: ProductCardProp) {
                     {product.title}
                 </p>
                 <p className="flex gap-3">
-                    <span className="text-main">${product.price}</span>
+                    <span className="text-main">
+                        ${Intl.NumberFormat().format(product.price)}
+                    </span>
                     <span
                         className="opacity-50 line-through"
                         aria-label={`Original Price ${originalPrice}`}
                     >
-                        ${originalPrice}
+                        ${Intl.NumberFormat().format(originalPrice)}
                     </span>
                 </p>
                 <Rating rating={product.rating} />

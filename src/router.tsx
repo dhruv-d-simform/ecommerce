@@ -6,20 +6,53 @@ import {
 import App from '@/App';
 import { HomePage } from '@/pages/HomePage';
 import { ProductDetailsPage } from '@/pages/ProductDetailsPage';
-import { LoginPage } from '@/pages/LoginPage';
-import { SignupPage } from '@/pages/SignupPage';
+import { LoginPage } from './auth/pages/LoginPage';
+import { SignupPage } from '@/auth/pages/SignupPage';
 import { NotFound } from '@/pages/NotFound';
+import { PrivateRoute } from '@/auth/components/PrivateRoute';
+import { PublicRoute } from '@/auth/components/PublicRoute';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<App />}>
-            <Route index element={<HomePage />} />
+        <Route>
             <Route
-                path="/product/:productId"
-                element={<ProductDetailsPage />}
+                path="/"
+                element={
+                    <PrivateRoute>
+                        <ErrorBoundary>
+                            <App />
+                        </ErrorBoundary>
+                    </PrivateRoute>
+                }
+            >
+                <Route index element={<HomePage />} />
+                <Route
+                    path="/product/:productId"
+                    element={<ProductDetailsPage />}
+                />
+            </Route>
+
+            <Route
+                path="/login"
+                element={
+                    <PublicRoute>
+                        <ErrorBoundary>
+                            <LoginPage />
+                        </ErrorBoundary>
+                    </PublicRoute>
+                }
             />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
+            <Route
+                path="/signup"
+                element={
+                    <PublicRoute>
+                        <ErrorBoundary>
+                            <SignupPage />
+                        </ErrorBoundary>
+                    </PublicRoute>
+                }
+            />
             <Route path="*" element={<NotFound />} />
         </Route>
     )

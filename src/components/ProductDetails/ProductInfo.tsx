@@ -27,8 +27,8 @@ export function ProductInfo({
     sku,
     weight,
 }: ProductInfoProps) {
-    const originalPrice = ((price / (100 - discountPercentage)) * 100).toFixed(
-        2
+    const originalPrice = Number(
+        ((price / (100 - discountPercentage)) * 100).toFixed(2)
     );
 
     const isLowStock = stock > 0 && stock <= 10;
@@ -57,10 +57,10 @@ export function ProductInfo({
                 {discountPercentage > 0 ? (
                     <>
                         <span className="text-3xl font-bold text-gray-900">
-                            ${price}
+                            ${Intl.NumberFormat().format(price)}
                         </span>
                         <span className="ml-2 text-lg text-gray-500 line-through">
-                            ${originalPrice}
+                            ${Intl.NumberFormat().format(originalPrice)}
                         </span>
                     </>
                 ) : (
@@ -77,15 +77,17 @@ export function ProductInfo({
             <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                     <h3 className="text-sm text-gray-500">Brand</h3>
-                    <p className="font-medium">{brand}</p>
+                    <p className="font-medium">{brand || 'N/A'}</p>
                 </div>
                 <div>
                     <h3 className="text-sm text-gray-500">SKU</h3>
-                    <p className="font-medium">{sku}</p>
+                    <p className="font-medium">{sku || 'N/A'}</p>
                 </div>
                 <div>
                     <h3 className="text-sm text-gray-500">Weight</h3>
-                    <p className="font-medium">{weight} kg</p>
+                    <p className="font-medium">
+                        {weight ? `${weight} kg` : 'N/A'}
+                    </p>
                 </div>
                 <div>
                     <h3 className="text-sm text-gray-500">Stock</h3>
