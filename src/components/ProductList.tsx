@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ProductCard } from '@/components/ProductCard';
 import { Spinner } from '@/components/ui/spinner';
-import { type FilterState, Sidebar } from '@/components/Sidebar';
+import { type FilterState, SortOptions, Sidebar } from '@/components/Sidebar';
 import type { Product } from '@/types/product.types';
 
 interface ProductListProp {
@@ -31,7 +31,7 @@ export function ProductList({
 
     const [filters, setFilters] = useState<FilterState>({
         priceRange: priceRangeLimit,
-        sortBy: 'featured',
+        sortBy: SortOptions.Featured,
     });
 
     const handleFilterChange = (
@@ -76,15 +76,15 @@ export function ProductList({
 
         // sort filtered products
         switch (filters.sortBy) {
-            case 'name-asc':
+            case SortOptions.NameAsc:
                 return filtered.sort((a, b) => a.title.localeCompare(b.title));
-            case 'name-desc':
+            case SortOptions.NameDesc:
                 return filtered.sort((a, b) => b.title.localeCompare(a.title));
-            case 'price-asc':
+            case SortOptions.PriceAsc:
                 return filtered.sort((a, b) => a.price - b.price);
-            case 'price-desc':
+            case SortOptions.PriceDesc:
                 return filtered.sort((a, b) => b.price - a.price);
-            case 'featured':
+            case SortOptions.Featured:
             default:
                 return filtered;
         }

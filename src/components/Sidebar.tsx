@@ -1,12 +1,20 @@
+export enum SortOptions {
+    Featured = 'featured',
+    NameAsc = 'name-asc',
+    NameDesc = 'name-desc',
+    PriceAsc = 'price-asc',
+    PriceDesc = 'price-desc',
+}
+
 const SORT_OPTIONS = [
-    { value: 'featured', label: 'Featured' },
-    { value: 'name-asc', label: 'Name: A to Z' },
-    { value: 'name-desc', label: 'Name: Z to A' },
-    { value: 'price-asc', label: 'Price: Low to High' },
-    { value: 'price-desc', label: 'Price: High to Low' },
+    { value: SortOptions.Featured, label: 'Featured' },
+    { value: SortOptions.NameAsc, label: 'Name: A to Z' },
+    { value: SortOptions.NameDesc, label: 'Name: Z to A' },
+    { value: SortOptions.PriceAsc, label: 'Price: Low to High' },
+    { value: SortOptions.PriceDesc, label: 'Price: High to Low' },
 ] as const;
 
-type SortOptions = (typeof SORT_OPTIONS)[number]['value'];
+// type SortOptions = (typeof SORT_OPTIONS)[number]['value'];
 interface PriceRange {
     min: number;
     max: number;
@@ -134,7 +142,7 @@ export function Sidebar({
                             min: priceRangeLimit.min,
                             max: priceRangeLimit.max,
                         });
-                        onFilterChange('sortBy', 'featured');
+                        onFilterChange('sortBy', SortOptions.Featured);
                     }}
                     className="w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-sm font-medium rounded-md cursor-pointer"
                 >
