@@ -1,35 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { SessionContext } from '@/auth/contexts/SessionContext';
-import { SupabaseSession } from '@/types/supabase.types';
-import { supabase } from '@/supabase-client';
+import { checkAuth } from '@/utils/authValidation';
 
 export function SessionProvider({ children }: React.PropsWithChildren) {
-    const [session, setSession] = useState<SupabaseSession>(null);
+    const [session, setSession] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchSession = async () => {
-            const { data } = await supabase.auth.getSession();
-            setSession(data.session);
+        async function validate() {
+            const token = await checkAuth();
+            setSession(token);
             setLoading(false);
-        };
-
-        fetchSession();
-
-        const { data: listener } = supabase.auth.onAuthStateChange(
-            (_event, session) => {
-                setSession(session);
-                setLoading(false);
-            }
-        );
-
-        return () => {
-            listener.subscription.unsubscribe();
-        };
+        }
+        validate();
     }, []);
 
     return (
-        <SessionContext.Provider value={{ session, loading }}>
+        <SessionContext.Provider value={{ session, loading, setSession }}>
             {children}
         </SessionContext.Provider>
     );
