@@ -11,7 +11,7 @@ interface UserData {
     firstName: string;
     lastName: string;
     email: string;
-    role: 'ADMIN' | 'USER' | string;
+    role: string;
     contactNumber: string;
     isActive: boolean;
     createdAt: string;
