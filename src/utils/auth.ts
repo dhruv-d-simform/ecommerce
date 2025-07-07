@@ -1,10 +1,10 @@
-import type { SignupSignupResponse, AuthTokens } from '@/types/auth.types';
+import type { SignupOrSigninResponse, AuthTokens } from '@/types/auth.types';
 import type { User } from '@/types/user.types';
 import { storeTokens } from '@/utils/localStorageService';
 
 export async function signUpUser(
     newUser: Omit<User, 'age' | 'gender' | 'confirmPassword'>
-): Promise<SignupSignupResponse> {
+): Promise<SignupOrSigninResponse> {
     try {
         const response = await fetch(
             `${import.meta.env.VITE_AUTH_API}/admin/signup`,
@@ -15,7 +15,7 @@ export async function signUpUser(
             }
         );
 
-        const data: SignupSignupResponse = await response.json();
+        const data: SignupOrSigninResponse = await response.json();
 
         return data;
     } catch (error) {
@@ -26,7 +26,7 @@ export async function signUpUser(
 
 export async function signInUser(
     credentials: Pick<User, 'email' | 'password'>
-): Promise<SignupSignupResponse> {
+): Promise<SignupOrSigninResponse> {
     try {
         const response = await fetch(
             `${import.meta.env.VITE_AUTH_API}/signin`,
@@ -37,7 +37,7 @@ export async function signInUser(
             }
         );
 
-        const data: SignupSignupResponse = await response.json();
+        const data: SignupOrSigninResponse = await response.json();
 
         if (response.ok && data.status === 'success') {
             const tokens: AuthTokens = {

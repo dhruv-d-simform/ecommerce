@@ -20,7 +20,7 @@ interface UserData {
     teacher?: null | unknown;
     student?: null | unknown;
 }
-interface SignupSigninResponseSuccess {
+interface SignupOrSigninResponseSuccess {
     status: 'success';
     message: string;
     data: {
@@ -30,7 +30,7 @@ interface SignupSigninResponseSuccess {
     };
 }
 
-interface SignupSignupResponseError {
+interface SignupOrSigninResponseError {
     status: 'error';
     message: string;
 }
@@ -40,15 +40,15 @@ interface AuthTokens {
     refreshToken: string;
 }
 
-type SignupSignupResponse =
-    | SignupSigninResponseSuccess
-    | SignupSignupResponseError;
+type SignupOrSigninResponse =
+    | SignupOrSigninResponseSuccess
+    | SignupOrSigninResponseError;
 
 export type {
     SignupData,
     UserData,
-    SignupSigninResponseSuccess,
-    SignupSignupResponseError,
-    SignupSignupResponse,
+    SignupOrSigninResponseSuccess,
+    SignupOrSigninResponseError,
+    SignupOrSigninResponse,
     AuthTokens,
 };

@@ -1,8 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
 import { signUpUser } from '@/utils/auth';
 import type {
-    SignupSignupResponse,
-    SignupSignupResponseError,
+    SignupOrSigninResponse,
+    SignupOrSigninResponseError,
 } from '@/types/auth.types';
 import { useNavigate } from 'react-router';
 
@@ -10,7 +10,7 @@ export const useSignupUser = () => {
     const navigate = useNavigate();
     return useMutation({
         mutationFn: signUpUser,
-        onSuccess: (data: SignupSignupResponse) => {
+        onSuccess: (data: SignupOrSigninResponse) => {
             if (data.status === 'success') {
                 alert('Account created successfully');
                 navigate('/login');
@@ -21,7 +21,7 @@ export const useSignupUser = () => {
                 );
             }
         },
-        onError: (error: SignupSignupResponseError) => {
+        onError: (error: SignupOrSigninResponseError) => {
             console.error(error.message);
         },
     });

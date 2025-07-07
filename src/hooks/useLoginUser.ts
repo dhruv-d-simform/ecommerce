@@ -5,8 +5,10 @@ import { checkAuth } from '@/utils/authValidation';
 import { useSession } from '@/auth/contexts/SessionContext';
 
 import type {
-    SignupSignupResponse,
-    SignupSignupResponseError,
+    // SignupOrSigninResponse,
+    // SignupOrSignupResponseError,
+    SignupOrSigninResponse,
+    SignupOrSigninResponseError,
 } from '@/types/auth.types';
 
 export const useLoginUser = () => {
@@ -15,7 +17,7 @@ export const useLoginUser = () => {
 
     return useMutation({
         mutationFn: signInUser,
-        onSuccess: async (data: SignupSignupResponse) => {
+        onSuccess: async (data: SignupOrSigninResponse) => {
             if (data.status === 'success') {
                 const session = await checkAuth();
                 setSession(session);
@@ -24,7 +26,7 @@ export const useLoginUser = () => {
                 throw new Error(data.message);
             }
         },
-        onError: (error: SignupSignupResponseError) => {
+        onError: (error: SignupOrSigninResponseError) => {
             console.error(error);
         },
     });
