@@ -54,8 +54,6 @@ export function SignupPage() {
         },
     });
 
-    console.log(formik.errors);
-
     if (isPending) {
         return (
             <div className="flex flex-col items-center min-h-[80vh] justify-center">
