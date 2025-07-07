@@ -4,7 +4,7 @@ import { CalendarIcon } from 'lucide-react';
 import { useFormik } from 'formik';
 import { format } from 'date-fns';
 
-import type { User } from '@/types/user.types';
+import type { Gender, User } from '@/types/user.types';
 import { AddUserSchema } from '@/auth/utils/validations';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -30,11 +30,13 @@ export function SignupPage() {
     const [date, setDate] = useState<Date | undefined>(undefined);
     const { mutate: signUpUser, isPending } = useSignupUser();
 
-    const formik = useFormik<Omit<User, 'age' | 'gender'>>({
+    const formik = useFormik<User>({
         initialValues: {
             firstName: '',
             lastName: '',
             email: '',
+            age: 0,
+            gender: 'male',
             contactNumber: '',
             password: '',
             confirmPassword: '',
@@ -198,13 +200,30 @@ export function SignupPage() {
                                 id="age"
                                 className="h-10"
                                 type="number"
+                                value={formik.values.age}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
+                            {formik.touched.age && formik.errors.age && (
+                                <p className="text-red-600 text-sm">
+                                    {formik.errors.age}
+                                </p>
+                            )}
                         </div>
                         <div className="space-y-3 w-full">
                             <Label htmlFor="gender" className="text-gray-700">
                                 Gender
                             </Label>
-                            <Select name="gender">
+                            <Select
+                                name="gender"
+                                value={formik.values.gender}
+                                onValueChange={(value) =>
+                                    formik.setFieldValue(
+                                        'gender',
+                                        value as Gender
+                                    )
+                                }
+                            >
                                 <SelectTrigger
                                     id="gender"
                                     className="w-full py-[18.5px]"
@@ -219,6 +238,11 @@ export function SignupPage() {
                                     <SelectItem value="other">Other</SelectItem>
                                 </SelectContent>
                             </Select>
+                            {formik.touched.gender && formik.errors.gender && (
+                                <p className="text-red-600 text-sm">
+                                    {formik.errors.gender}
+                                </p>
+                            )}
                         </div>
                     </div>
 

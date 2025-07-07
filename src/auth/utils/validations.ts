@@ -13,6 +13,11 @@ export const AddUserSchema = Yup.object({
         .min(2, 'Last Name must be at least 2 characters')
         .max(15, 'Last Name must be at most 15 characters'),
     email: Yup.string().email('Invalid email').required('Email is required'),
+    age: Yup.number()
+        .typeError('Age must be a number')
+        .min(1, 'Age must be at least 1')
+        .max(100, 'Age must be lest then 100'),
+    gender: Yup.string(),
     contactNumber: Yup.string()
         .required('Contact Number is required')
         .matches(
