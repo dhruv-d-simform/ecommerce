@@ -1,0 +1,60 @@
+import type { SignupOrSigninResponse, AuthTokens } from '@/types/auth.types';
+import type { User } from '@/types/user.types';
+import { storeTokens } from '@/utils/localStorageService';
+
+export async function signUpUser(
+    newUser: Omit<User, 'age' | 'gender' | 'confirmPassword'>
+): Promise<SignupOrSigninResponse> {
+    try {
+        const response = await fetch(
+            `${import.meta.env.VITE_AUTH_API}/admin/signup`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newUser),
+            }
+        );
+
+        const data: SignupOrSigninResponse = await response.json();
+
+        return data;
+    } catch (error) {
+        console.error('Signup failed:', error);
+        return { status: 'error', message: 'Network or server error' };
+    }
+}
+
+export async function signInUser(
+    credentials: Pick<User, 'email' | 'password'>
+): Promise<SignupOrSigninResponse> {
+    try {
+        const response = await fetch(
+            `${import.meta.env.VITE_AUTH_API}/signin`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(credentials),
+            }
+        );
+
+        const data: SignupOrSigninResponse = await response.json();
+
+        if (response.ok && data.status === 'success') {
+            const tokens: AuthTokens = {
+                accessToken: data.data.accessToken,
+                refreshToken: data.data.refreshToken,
+            };
+            storeTokens(tokens);
+        } else {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        if (error instanceof Error) {
+            return { status: 'error', message: error.message };
+        } else {
+            return { status: 'error', message: 'Network or Server error' };
+        }
+    }
+}

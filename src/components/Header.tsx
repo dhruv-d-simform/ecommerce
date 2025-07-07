@@ -1,9 +1,10 @@
 import { Link, useLocation } from 'react-router';
-import { supabase } from '@/supabase-client';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
+import { clearTokens } from '@/utils/localStorageService';
 import searchIcon from '/icons/search.svg';
+import { useSession } from '@/auth/contexts/SessionContext';
 
 interface HeaderProps {
     searchInput: string;
@@ -13,6 +14,7 @@ interface HeaderProps {
 
 export function Header({ searchInput, setSearchInput, ref }: HeaderProps) {
     const location = useLocation();
+    const { setSession } = useSession();
 
     return (
         <header className="fixed z-10 bg-background w-full max-w-[100rem] mx-auto left-0 right-0 h-16 border-b flex justify-between items-center gap-6 px-6">
@@ -46,7 +48,10 @@ export function Header({ searchInput, setSearchInput, ref }: HeaderProps) {
             )}
 
             <Button
-                onClick={() => supabase.auth.signOut()}
+                onClick={() => {
+                    setSession(null);
+                    clearTokens();
+                }}
                 variant="ghost"
                 className="bg-main text-white hover:bg-main hover:text-white hover:opacity-90 cursor-pointer"
             >

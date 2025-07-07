@@ -1,12 +1,13 @@
 import { createContext, useContext } from 'react';
-import { SupabaseSession } from '@/types/supabase.types';
 
 export const SessionContext = createContext<{
-    session: SupabaseSession;
+    session: string | null;
     loading: boolean;
+    setSession: (session: string | null) => void;
 }>({
     session: null,
     loading: true,
+    setSession: () => {},
 });
 
 export function useSession() {
