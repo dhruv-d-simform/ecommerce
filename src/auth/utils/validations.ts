@@ -21,10 +21,15 @@ export const AddUserSchema = Yup.object({
         ),
     password: Yup.string()
         .required('Password is required')
+        .min(8, 'Password must be at least 8 characters long')
+        .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
+        .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
         .matches(
-            /^(?=.*[A-Za-z])(?=.*\d).{8,}$/,
-            'Password must be at least 8 characters long and contain both letters and numbers'
-        ),
+            /[\W_]/,
+            'Password must contain at least one special character'
+        )
+        .matches(/\d/, 'Password must contain at least one number')
+        .required('Password is required'),
     confirmPassword: Yup.string()
         .oneOf([Yup.ref('password')], 'Passwords must match')
         .required('Confirm Password is required'),
